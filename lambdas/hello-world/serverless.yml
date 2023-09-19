@@ -1,0 +1,29 @@
+service: message
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-bundle
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 256
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-3
+  iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "s3:GetObject"
+    Resource:
+      - "arn:aws:s3:::*"
+
+functions:
+  hello:
+    handler: src/handler.hello
+  hello-on-s3-put-object:
+    handler: src/handler.hello
+    events:
+      - s3:
+          bucket: "carbon-demo-bucket"
+          event: s3:ObjectCreated:Put

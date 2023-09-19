@@ -1,0 +1,14 @@
+{
+  "name": "hello-world-node",
+  "version": "1.0.0",
+  "description": "Log Hello World message",
+  "main": "handler.js",
+  "scripts": {
+    "test": "serverless-bundle test"
+  },
+  "author": "kevin.llps",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-bundle": "^6.0.0"
+  }
+}
